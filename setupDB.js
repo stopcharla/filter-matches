@@ -1,5 +1,5 @@
 const mongoClient = require('mongodb').MongoClient;
-
+var uniqid = require('uniqid');
 const mongoDbURl = "mongodb://localhost:27017";
 const dbName = 'sparkDatabase';
 const matchesCollectionName = "matches";
@@ -44,6 +44,7 @@ function insertMatches(collectionName){
 
 function insertMatchToDb(match,collection){
     return new Promise((resolve,reject) => {
+        match.userId = uniqid();
         let city = match.city;
         match.city = city.name;
         let location = {type:"Point",coordinates:[city.lon,city.lat]};
@@ -54,7 +55,7 @@ function insertMatchToDb(match,collection){
             }else{
                 resolve()
             }
-        }) 
+        });
     });
 }
 
