@@ -4,7 +4,7 @@
   "description": "filters matches based on various parameters",
   "main": "main.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --timeout 120000"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/stopcharla/filter-matches#readme",
   "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.16.4",
+    "mocha": "^5.2.0",
     "mongodb": "^3.1.8",
+    "mongoose": "^5.3.5",
     "uniqid": "^5.0.3"
   }
 }
