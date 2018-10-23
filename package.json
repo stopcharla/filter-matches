@@ -1,0 +1,22 @@
+{
+  "name": "@capillarytech/filter-matches",
+  "version": "1.0.0",
+  "description": "filters matches based on various parameters",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stopcharla/filter-matches.git"
+  },
+  "author": "Sidhartha Topcharla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stopcharla/filter-matches/issues"
+  },
+  "homepage": "https://github.com/stopcharla/filter-matches#readme",
+  "dependencies": {
+    "mongodb": "^3.1.8"
+  }
+}
