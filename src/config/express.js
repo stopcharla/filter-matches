@@ -21,5 +21,7 @@ module.exports = function () {
     
     app.use(bodyParser.json());
 
+    require('../routes/user.routes.js')(app);
+
     return app;
 };

@@ -43,4 +43,10 @@ describe("Obtaining current user and corresponding matches", () => {
         });
     })
 
+    it('Obtain matches whith no profile image and age is 45',(done) => {
+        matchModel.find({userId:{$ne:currentUser.userId},main_photo:null,age:45},(err,res) => {
+            done();
+        });
+    })
+
 });
