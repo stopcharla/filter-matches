@@ -11,7 +11,17 @@ var getCurrentUser = function (req, res) {
 };
 
 var getMatches = function (req, res) {
-   
+    let condition = getFilterQuery(req);
+    let currentUser = req.currentUser;
+    condition["userId"]= { $ne: currentUser.userId }
+    console.log("condition is",condition);
+    MatchesModel.find(condition).exec().then((response) => {
+        console.log("matches found for user");
+        res.json({ matches: response });
+    }).catch((err) => {
+        console.error("error occured in getting matches:", err);
+        res.status(500).send(err);
+    });
 };
 
 var getFilterQuery = function getFilterQuery(req) {

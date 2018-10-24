@@ -7,7 +7,6 @@ var getMacthesUrl = "/api/$userId/matches"
 describe("checking user api's", function () {
     var currentUser;
     it("Obtain a user for current session", (done) => {
-
         request.get(baseURL+currentUserUrl,(err,response,body) => {
             body = JSON.parse(body)
             expect(response.statusCode).to.equal(200);
@@ -20,12 +19,27 @@ describe("checking user api's", function () {
     it("Obtain a user matches", (done) => {
         getMacthesUrl = getMacthesUrl.replace("$userId",currentUser.userId)
         request.get(baseURL+getMacthesUrl,(err,response,body) => {
-            console.log(typeof(body))
             body = JSON.parse(body)
-            console.log(typeof(body))
             expect(response.statusCode).to.equal(200);
             currentUser = body;
             done();
         });
     });
+
+    it("Obtain a user matches with filter on radius, height and compatiblity", (done) => {
+        getMacthesUrl = getMacthesUrl.replace("$userId",currentUser.userId)
+        queryParams = {
+            radius: 50,
+            heightFrom: 163,
+            heightTo: 190,
+            compatibilityScoreFrom: 19,
+            compatibilityScoreTo: 78
+        }
+        request.get({url:baseURL+getMacthesUrl,qs:queryParams},(err,response,body) => {
+            expect(response.statusCode).to.equal(200);
+            done();
+        });
+    });
+
+
 });
