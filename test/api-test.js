@@ -40,6 +40,4 @@ describe("checking user api's", function () {
             done();
         });
     });
-
-
 });

@@ -35,7 +35,17 @@ module.exports = {
         radius:"radius",
         hasFace:"hasFace"
     },
+
+    valueFrom: "valueFrom",
+    valueTo: "valueTo",
+
+    ignoreQuery:"considerQuery",
+    minAge:18,
     maxAge:95,
+    minHeight:135,
     maxHeight:210,
-    maxCompaitablityScore:99
+    minCompaitablityScore:1,
+    maxCompaitablityScore:99,
+    minDistance:30,
+    maxDistance:300
 };

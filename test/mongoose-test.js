@@ -2,7 +2,6 @@ const expect = require('chai').expect;
 
 var mongoose = require('mongoose');
 // const user = require('../src/controllers/user.controller');
-
 before(function (done) {
     mongoose.connect('mongodb://localhost:27017/sparkDatabase', function (err) {
         done(err);
