@@ -26,7 +26,7 @@ var matchSchema = new Schema({
         type:Number
     },
     contacts_exchanged:{
-        type:Boolean,
+        type:Number,
         default:false
     },
     favourite:{

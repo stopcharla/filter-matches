@@ -47,6 +47,7 @@ function insertMatchToDb(match,collection){
         match.userId = uniqid();
         let city = match.city;
         match.city = city.name;
+        match.compatibility_score = match.compatibility_score*100;
         let location = {type:"Point",coordinates:[city.lon,city.lat]};
         match.loc = location;
         collection.insertOne(match,(err,res) => {

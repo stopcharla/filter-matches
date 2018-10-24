@@ -5,4 +5,9 @@ module.exports = function (app) {
 
     app.route('/api/user')
         .get(user.getCurrentUser)
+
+    app.route('/api/:userId/matches')
+        .get(user.getMatches)
+
+    app.param('userId', user.getUserById);
 };
