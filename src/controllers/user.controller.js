@@ -2,6 +2,11 @@ const MatchesModel = require('../models/matches.model');
 const config = require('../config/config');
 const utils = require('../utils/utils');
 
+/**
+ * Obtaining the a user from the db for current session
+ * @param {*} req 
+ * @param {*} res 
+ */
 var getCurrentUser = function (req, res) {
     getUser().then((data) => {
         res.json(data);
@@ -13,6 +18,12 @@ var getCurrentUser = function (req, res) {
     });
 };
 
+/**
+ * Obtaining matches for user based on filters provided, if no filters provided
+ * it returns all the matches for current user
+ * @param {*} req 
+ * @param {*} res 
+ */
 var getMatches = function (req, res) {
     let currentUser = req.currentUser;
     let condition = getFilterQuery(req);
@@ -30,6 +41,12 @@ var getMatches = function (req, res) {
     });
 };
 
+/**
+ * Returns the mongo query JSON object created from the filters provided by the user
+ * checks all the filters and their ranges and values.
+ * If any arbitary values(like nan) are passed in query parameters then the filter will be ignored.
+ * @param {*} req 
+ */
 var getFilterQuery = function getFilterQuery(req) {
     let queryParams = req.query;
     let condition = {};
@@ -113,6 +130,13 @@ var getFilterQuery = function getFilterQuery(req) {
     return condition;
 }
 
+/**
+ * On passing user id as a request parameter the function queries the user info and
+ * adds it to the request object.
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ */
 var getUserById = function (req, res, next) {
     let id = req.params.userId;
     getUser(id).then((data) => {
@@ -129,6 +153,10 @@ var getUserById = function (req, res, next) {
     });
 }
 
+/**
+ * returns a single user either based on userid or no filter
+ * @param {*} userId 
+ */
 var getUser = function (userId) {
     let condition = {};
     if (userId !== null && typeof (userId) !== 'undefined') {
