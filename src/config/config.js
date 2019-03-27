@@ -1,8 +1,4 @@
-/* 
- * InStore AI Recommendation API
- * Copyright (c) 2018, Capillary Technologies Pvt. Ltd.
- * sumandeep.banerjee@capillarytech.com
- */
+
 
 "use strict";
 
